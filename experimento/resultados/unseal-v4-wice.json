@@ -1,0 +1,10 @@
+{
+  "analysis_sha256": "3ba1cde65cb400108a3198766df3f9853c8aa3d7bb19ccb960478c4b7666953f",
+  "complete_distinct_cases": 355,
+  "freeze_sha256": "32e5c2c60a154a0e056c93018e08bce04396a8f3aa04af5d3951bd784a91b940",
+  "labels_sha256": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e",
+  "metadata_sha256": "ac11b0d986a8441a060aab29a1ef468dcb32e34ac52607b239ffb9c3d6430ecd",
+  "opened_at_utc": "2026-09-23T17:21:43.625745+00:00",
+  "results_sha256": "84f03a94349c3cda0e24a3f3f3418886e5d22ccea5f304a3e8101a5551aa5d53",
+  "routed_luna_calls_distinct_from_baseline": 75
+}

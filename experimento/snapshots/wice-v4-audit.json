@@ -1,0 +1,49 @@
+{
+  "artifact_sha256": {
+    "labels": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e",
+    "manifest": "0edc6463ffaad119d3a9402fb3c163761b281dc702d3a3e077ad18667c515f61",
+    "snapshot": "9e7043df23054586516b3a28cc1d71947f3bb3c38a58d5ce73f76e4467d1edde"
+  },
+  "exclusions": [
+    {
+      "case_id": "wice:dev03439",
+      "reason": "evidence_over_60000_chars"
+    },
+    {
+      "case_id": "wice:test03760",
+      "reason": "evidence_over_60000_chars"
+    },
+    {
+      "case_id": "wice:test03082",
+      "reason": "evidence_over_60000_chars"
+    },
+    {
+      "case_id": "wice:test02919",
+      "reason": "evidence_over_60000_chars"
+    }
+  ],
+  "kept_cases": 703,
+  "max_evidence_chars": 60000,
+  "origins": {
+    "dev": {
+      "raw_cases": 349,
+      "sha256": "67531ca79bde4c81d3752fb69d9cb0d3d6763de5c3028f548b83ef053a6f8042",
+      "url": "https://raw.githubusercontent.com/ryokamoi/wice/ddeb6c183665e2a20c5f03c5aa07f03888b9870f/data/entailment_retrieval/claim/dev.jsonl"
+    },
+    "test": {
+      "raw_cases": 358,
+      "sha256": "4c91b9e9590cfcd8f8a0f7288b5ff315af8ade946d7bf26f50fbd671bb86dbe8",
+      "url": "https://raw.githubusercontent.com/ryokamoi/wice/ddeb6c183665e2a20c5f03c5aa07f03888b9870f/data/entailment_retrieval/claim/test.jsonl"
+    }
+  },
+  "raw_cases": 707,
+  "source_commit": "ddeb6c183665e2a20c5f03c5aa07f03888b9870f",
+  "split_counts": {
+    "calibration": 348,
+    "test": 355
+  },
+  "split_groups": {
+    "calibration": 307,
+    "test": 323
+  }
+}

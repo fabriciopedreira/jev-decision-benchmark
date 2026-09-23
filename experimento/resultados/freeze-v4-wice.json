@@ -1,0 +1,23 @@
+{
+  "cascade_negative_threshold": 0.3,
+  "cascade_positive_threshold": 0.7,
+  "created_at_utc": "2026-09-23T16:58:00.784361+00:00",
+  "implementation_sha256": "ad3ab92a83e7e9df6cf8fdfd3bd0468ca7a7a0be5907a834bd88b0d975a2203f",
+  "labels_sha256": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e",
+  "manifest_sha256": "0edc6463ffaad119d3a9402fb3c163761b281dc702d3a3e077ad18667c515f61",
+  "models": {
+    "jev": "jev-1.13.0",
+    "luna": "gpt-5.6-luna",
+    "terra": "gpt-5.6-terra"
+  },
+  "protocol_sha256": "5a0d0ec62ea6eece6bb660c4026013d3f84c17494345638409e51b6907bf0de0",
+  "reasoning": {
+    "luna": "none",
+    "terra": "provider_default"
+  },
+  "rule_threshold": 0.7575757575757576,
+  "seed": 20260923,
+  "snapshot_sha256": "9e7043df23054586516b3a28cc1d71947f3bb3c38a58d5ce73f76e4467d1edde",
+  "status": "frozen_before_external_test",
+  "test_case_count": 355
+}
