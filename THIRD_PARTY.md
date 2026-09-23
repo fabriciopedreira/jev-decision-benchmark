@@ -4,7 +4,7 @@
 
 Fonte: Ryo Kamoi, Tanya Goyal, Juan Diego Rodriguez e Greg Durrett. **WiCE: Real-World Entailment for Claims in Wikipedia**, EMNLP 2023. [Paper](https://aclanthology.org/2023.emnlp-main.470/) · [Repositório](https://github.com/ryokamoi/wice).
 
-Commit usado: `ddeb6c183665e2a20c5f03c5aa07f03888b9870f`, diretório `data/entailment_retrieval/claim`, arquivos `dev.jsonl` e `test.jsonl`. Origem e SHA-256 registrados em [audit](experimento/snapshots/wice-v4-audit.json).
+Commit usado: `ddeb6c183665e2a20c5f03c5aa07f03888b9870f`, diretório `data/entailment_retrieval/claim`, arquivos `dev.jsonl` e `test.jsonl`. Origem e SHA-256 registrados em [audit](experimento/snapshots/auditoria.json).
 
 A [licença dos autores](https://github.com/ryokamoi/wice/blob/ddeb6c183665e2a20c5f03c5aa07f03888b9870f/LICENSE.md) distingue:
 

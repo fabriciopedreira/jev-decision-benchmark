@@ -1,4 +1,4 @@
-"""Audita a execução V4 antes de abrir o gabarito e calcula o placar pré-declarado."""
+"""Audita a execução antes de abrir o gabarito e calcula o placar pré-declarado."""
 
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ from pathlib import Path
 EXPERIMENT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(EXPERIMENT_ROOT))
 
-from harness_v3.metrics import percentile, score
-from harness_v4.runner import DatasetV4, LABELS, MANIFEST, sha256, verify_freeze
+from harness.metrics import percentile, score
+from harness.runner import Dataset, LABELS, MANIFEST, sha256, verify_freeze
 
 
 PRICES = {
@@ -34,8 +34,8 @@ def response_ids(prediction: dict) -> list[str]:
             if isinstance(item.get("llm_response"), dict) and item["llm_response"].get("id")]
 
 
-def validate_and_unseal(results: Path, metadata: Path, freeze: Path, unseal_output: Path) -> tuple[list[dict], DatasetV4]:
-    dataset = DatasetV4()
+def validate_and_unseal(results: Path, metadata: Path, freeze: Path, unseal_output: Path) -> tuple[list[dict], Dataset]:
+    dataset = Dataset()
     verify_freeze(freeze, dataset)
     run_meta = json.loads(metadata.read_text(encoding="utf-8"))
     if run_meta.get("split") != "test" or run_meta.get("completed_cases") != 355:
@@ -254,9 +254,6 @@ def combine_states(*states: str) -> str:
 def analyze(rows: list[dict], labels: dict[str, str], originals: dict[str, str]) -> dict:
     conditions = condition_predictions(rows)
     metrics = {name: score(predictions, labels) for name, predictions in conditions.items()}
-    for values in metrics.values():
-        # score() da V3 tem tarifa OpenAI única (Luna); a V4 precifica Terra abaixo.
-        values.pop("usage", None)
     for name in ("luna", "terra", "cascade", "rule"):
         metrics[name]["brier"] = None
         metrics[name]["ece_10"] = None

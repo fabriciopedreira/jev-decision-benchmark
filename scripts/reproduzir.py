@@ -7,7 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'experimento'))
-from analisar_wice_v4 import analyze, test_labels, response_ids
+from analisar import analyze, test_labels, response_ids
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -27,11 +27,14 @@ def compare(actual, expected, path='analysis'):
         assert actual==expected, (path,actual,expected)
 
 def main():
+    if not __debug__:
+        raise RuntimeError('Execute sem -O: as verificações de integridade precisam estar ativas')
     manifest=json.loads((ROOT/'manifesto-exportacao.json').read_text())
-    for name,digest in manifest['exact_copies_sha256'].items():
+    assert manifest['files_sha256'], 'Manifesto de distribuição vazio'
+    for name,digest in manifest['files_sha256'].items():
         assert sha(ROOT/name)==digest, f'Arquivo alterado: {name}'
-    for name,hashes in manifest['transformed_documents'].items():
-        assert sha(ROOT/name)==hashes['public_sha256'], f'Documento alterado: {name}'
+    for name,record in manifest['preserved_artifacts'].items():
+        assert sha(ROOT/name)==record['sha256'], f'Artefato histórico alterado: {name}'
     result=ROOT/manifest['public_results_path']
     assert sha(result)==manifest['public_results_sha256'], 'Resultado público alterado'
     rows=[json.loads(line) for line in result.read_text().splitlines() if line]
@@ -52,7 +55,7 @@ def main():
                 ids.extend(response_ids(pred))
     assert len(ids)==len(set(ids))==785
     actual=analyze(rows,labels,originals)
-    expected=json.loads((ROOT/'experimento/resultados/v4-wice-analysis.json').read_text())
+    expected=json.loads((ROOT/'experimento/resultados/analise.json').read_text())
     compare(actual,expected)
     def no_cache(pred):
         u=pred['usage']

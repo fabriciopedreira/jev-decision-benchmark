@@ -11,7 +11,7 @@ from matplotlib.patches import FancyBboxPatch
 TOPIC = Path(__file__).resolve().parent.parent
 ASSETS = TOPIC / 'outputs/graficos'
 ASSETS.mkdir(parents=True, exist_ok=True)
-ANALYSIS = TOPIC / 'experimento/resultados/v4-wice-analysis.json'
+ANALYSIS = TOPIC / 'experimento/resultados/analise.json'
 data = json.loads(ANALYSIS.read_text())
 
 BG, INK, MUTED, GRID = '#F7F8FA', '#182535', '#536275', '#DDE3E8'
@@ -91,7 +91,7 @@ save(fig, 'jev-tempo', 'Fonte: experimento de Fabricio Pedreira · WiCE, 355 cas
 
 values = [data['costs'][k]['calculated_per_1000_usd'] for k in keys]
 saving = 100*(1-data['costs']['cascade']['calculated_total_usd']/data['costs']['luna']['calculated_total_usd'])
-rows = [json.loads(line) for line in (TOPIC/'experimento/resultados/v4-wice-test-public.jsonl').read_text().splitlines() if line]
+rows = [json.loads(line) for line in (TOPIC/'experimento/resultados/previsoes.jsonl').read_text().splitlines() if line]
 def no_cache_luna(pred):
     u = pred['usage']
     return (u.get('input_tokens_total',u['input_tokens'])*.20 + u.get('output_tokens_total',u['output_tokens'])*1.20)/1e6

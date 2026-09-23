@@ -8,14 +8,14 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'experimento'))
-from preparar_wice_v4 import build
+from preparar_dados import build
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
-    snapshot=ROOT/'experimento/snapshots/wice-v4-inputs.jsonl'
-    freeze=json.loads((ROOT/'experimento/resultados/freeze-v4-wice.json').read_text())
+    snapshot=ROOT/'experimento/snapshots/entradas.jsonl'
+    freeze=json.loads((ROOT/'experimento/resultados/freeze-original.json').read_text())
     if snapshot.exists():
         assert digest(snapshot)==freeze['snapshot_sha256'], 'Snapshot existente divergente; não sobrescrito'
         print('Snapshot já existe e coincide com o freeze original.')
@@ -23,10 +23,10 @@ def main():
     with tempfile.TemporaryDirectory(prefix='jev-wice-download-') as tmp:
         out=Path(tmp)
         build(out)
-        for name,field in [('wice-v4-inputs.jsonl','snapshot_sha256'),('wice-v4-labels.csv','labels_sha256'),('wice-v4-manifest.csv','manifest_sha256')]:
+        for name,field in [('entradas.jsonl','snapshot_sha256'),('gabarito.csv','labels_sha256'),('manifesto.csv','manifest_sha256')]:
             assert digest(out/name)==freeze[field], f'Fonte divergente: {name}'
-        original=json.loads((ROOT/'experimento/snapshots/wice-v4-audit.json').read_text())
-        rebuilt=json.loads((out/'wice-v4-audit.json').read_text())
+        original=json.loads((ROOT/'experimento/snapshots/auditoria.json').read_text())
+        rebuilt=json.loads((out/'auditoria.json').read_text())
         assert rebuilt==original, 'Auditoria de origem divergente'
         shutil.copyfile(out/snapshot.name,snapshot)
     print('Inputs reconstruídos da fonte oficial e hashes conferidos. Nenhuma API de modelo chamada.')

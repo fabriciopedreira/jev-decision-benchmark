@@ -1,7 +1,6 @@
-"""Prepara WiCE claim-level para a V4 sem expor rótulos aos julgadores.
+"""Prepara WiCE claim-level sem expor rótulos aos julgadores.
 
-Uso: python -m editorial.conteudos... não é necessário; execute este arquivo com
-`--output-dir` dentro da pasta da pauta. Nenhuma API de modelo é chamada.
+Execute com --output-dir em uma pasta vazia. Nenhuma API de modelo é chamada.
 """
 
 from __future__ import annotations
@@ -123,13 +122,13 @@ def build(output_dir: Path) -> dict:
         raise ValueError("Página de origem vazou entre splits")
     output_dir.mkdir(parents=True, exist_ok=True)
     paths = {
-        "snapshot": output_dir / "wice-v4-inputs.jsonl",
-        "manifest": output_dir / "wice-v4-manifest.csv",
-        "labels": output_dir / "wice-v4-labels.csv",
-        "audit": output_dir / "wice-v4-audit.json",
+        "snapshot": output_dir / "entradas.jsonl",
+        "manifest": output_dir / "manifesto.csv",
+        "labels": output_dir / "gabarito.csv",
+        "audit": output_dir / "auditoria.json",
     }
     if any(path.exists() for path in paths.values()):
-        raise FileExistsError("Ao menos um artefato V4 já existe; não sobrescrever")
+        raise FileExistsError("Ao menos um artefato já existe; não sobrescrever")
     texts = {
         "snapshot": "".join(canonical_json(row) + "\n" for row in all_states),
         "manifest": csv_text(all_manifest, ["case_id", "split", "source_dataset", "parent_group_id", "input_sha256"]),

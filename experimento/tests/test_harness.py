@@ -7,9 +7,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from harness_v3.core import InputCase, Prediction
-from harness_v3.judges import RuleJudge
-from harness_v4.runner import DatasetV4, decide_cascade, run_case
+from harness.core import InputCase, Prediction
+from harness.judges import RuleJudge
+from harness.runner import Dataset, decide_cascade, run_case
 
 
 def prediction(case: InputCase, provider: str, probability: float | None, status: str = "ok") -> Prediction:
@@ -35,12 +35,12 @@ class FakeJudge:
         return prediction(case, self.name, self.probability)
 
 
-class V4Tests(unittest.TestCase):
+class HarnessTests(unittest.TestCase):
     def setUp(self):
         self.case = InputCase("wice:test", "test", "WiCE-claim", {"claim": "A", "evidence": ["A"], "claim_context": ""}, "hash", False)
 
     def test_dataset_is_valid_and_group_disjoint(self):
-        dataset = DatasetV4()
+        dataset = Dataset()
         self.assertEqual(len(dataset.cases("calibration")), 348)
         self.assertEqual(len(dataset.cases("test")), 355)
 

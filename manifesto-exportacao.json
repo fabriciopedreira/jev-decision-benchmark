@@ -1,34 +1,50 @@
 {
-  "cases": 355,
-  "exact_copies_sha256": {
+  "files_sha256": {
+    ".env.example": "60c370f0f665460345e3561d53f03cd9fe6811fcb831a3c2dee20cab9b2608ff",
+    ".gitignore": "0d7f33345aa24d0bed305072a7926ceeb79f0376589b0226d01c1409ce6c0a64",
+    "LICENSE": "0e183c3ed6aa70d8d72f79843f3b96b794b18a7d3847b6f10c949b005c0196b5",
+    "README.md": "660db01ae7d9bab9e56b4b12ec55805dee341f486fd09cc33b47d244a7327e9e",
+    "THIRD_PARTY.md": "de8f172c9af4ae1735df2b7d7a15c56679bc362d33d2ebcc8bee2ae4cfef7718",
     "assets/jev-capa.png": "edd455c173c09a0d278f6a2661a0fa134b0fc44441905c40ef3baa24d63af3ab",
     "assets/jev-custo.png": "f7d1e0b202c64ef091f6e2a3f771ba2b655a8e215aaf6d198ced91e543726f69",
     "assets/jev-qualidade.png": "834d5729fb4595dfb2f81389f66e588f36937ef1003ad4a23d238b34ce49cc79",
     "assets/jev-tempo.png": "1d848e567f0b88a3c7af7972714a150c5d3f7ed68f76955230fb7e626ac4046b",
-    "experimento/analisar_wice_v4.py": "3ba1cde65cb400108a3198766df3f9853c8aa3d7bb19ccb960478c4b7666953f",
-    "experimento/harness_v3/__init__.py": "14131c63fe9a66c546537e66079a06a100dc3bdd4f8f4baa3fc411923dbd3580",
-    "experimento/harness_v3/core.py": "dd7ba8b7825447d0e65f36806e76638dd3f27f15b3889a9e48ac2300019cdfdb",
-    "experimento/harness_v3/judges.py": "1d9b4463979696be32601c2f45c8d336a5ba9f3875451719ed94e71b5044cc7c",
-    "experimento/harness_v3/metrics.py": "fd8e7a1b958b38e54433e609f6a8fdab3044ade63dbccddb73a264fd452796b4",
-    "experimento/harness_v4/__init__.py": "5b504a7f548b882ee64855ca279e90c1a62da944a61b2f96c766c1ccded6331f",
-    "experimento/harness_v4/judges.py": "af12341a59ebdf60c0a4d98f43468bf456b9006cdb2da1da392ab55fc1c4943d",
-    "experimento/harness_v4/runner.py": "4d8eea75edf3335828247252998249370b19d432b63396288e1ca789aa3c7a74",
-    "experimento/preparar_wice_v4.py": "54e9d89d2f99391b7adaa978b58693755c229055fb3fbd83e61754145910c815",
-    "experimento/requirements.txt": "975311b49f776acf10c470e5c3f09b1637059e9855f457b17e6c68f7d8f62b51",
-    "experimento/resultados/freeze-v4-wice.json": "32e5c2c60a154a0e056c93018e08bce04396a8f3aa04af5d3951bd784a91b940",
-    "experimento/resultados/ragtruth-triagem-v4.md": "dcf0ccf3b3b1afe9d2a2372f7747afbc910f2696f01a685db984251cf97a13d0",
-    "experimento/resultados/unseal-v4-wice.json": "5ba1c76b410a95767b5452db2110cd060b974de1a12704603fcdd0f58e1a1303",
-    "experimento/resultados/v4-wice-analysis.json": "830945c41f062feafc67ddee3fefc9264ceb0f3e2ce0c229a21ba022a236dd70",
-    "experimento/resultados/v4-wice-test-metadata.json": "ac11b0d986a8441a060aab29a1ef468dcb32e34ac52607b239ffb9c3d6430ecd",
-    "experimento/snapshots/wice-v4-audit.json": "dc7f2dc3df618d1d0c15ce9915f4ab8061a7b81a17409d4b415fdebd5d124b46",
-    "experimento/snapshots/wice-v4-labels.csv": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e",
-    "experimento/snapshots/wice-v4-manifest.csv": "0edc6463ffaad119d3a9402fb3c163761b281dc702d3a3e077ad18667c515f61",
-    "experimento/tests/test_analisar_wice_v4.py": "b1ced7e26af374a812e06437fa8cccb6b5618ae2fd7b16bb26472e2132e9d3b0",
-    "experimento/tests/test_harness_v4.py": "6a0db19f6053cd0eb25ad3cd2dbf930fe84456f7b6c641ffd079d84cd6b226a4",
-    "experimento/tests/test_preparar_wice_v4.py": "933e444c25710de730ad2ce20e5de88d20e99405e63912f21029b0f84a665827",
-    "protocolo-v3.md": "c6461796fb2610b25147721bb67bd7640f46e27d6443a0697c8ae4e6b40c49cb",
-    "protocolo-v4.md": "5a0d0ec62ea6eece6bb660c4026013d3f84c17494345638409e51b6907bf0de0"
+    "docs/custo-e-tempo.md": "8c8939eb52b081476ca2ae431ee4be212cb9d7386bd6ede658e06db114eac695",
+    "docs/historico-e-limites.md": "37ed786b7a8d3c7913bb7a055395427f40b01decae55634bf9a44de7d2170a91",
+    "docs/metodologia.md": "561d5c3233672d8311f5d162a5e718b313887daf2c621086312a7eab0f5ba222",
+    "docs/protocolo-original.md": "5a0d0ec62ea6eece6bb660c4026013d3f84c17494345638409e51b6907bf0de0",
+    "docs/proveniencia.md": "d1738a908a01c7b2def2f609d65a9336c86ca9031e6469a8f5e8f5be7a8caae8",
+    "docs/reproducao.md": "88ac19df6a21a12abfd3fe27b025bf01262ae252e7d9aa02636901250c9544ac",
+    "docs/resultados.md": "46f0411f11fe41ca561c55fbd01a640e15a22c7ddc72136b28d4dd9d9993883e",
+    "docs/revisao.md": "9c10731efe3f9be423e4ab3fa98b07b85c3c7da54c0c520b03a0799b62464e99",
+    "docs/validacao.md": "7ef7aa238f0c53ed9bc5699db512373cc1b1e1286294a7a776fff6fdabb6b54f",
+    "experimento/analisar.py": "767f5d484c864643a490bd1cd23bae4d3ef5b709debd856c171225f22c447ce1",
+    "experimento/gerar_graficos.py": "be025b6267c0017594d4aa24d20d73029abde9ffdd14c0aa8bdd3c896305694e",
+    "experimento/harness/__init__.py": "979d53e97133f85ed1055ae088bdd4a5ae7d6d168b50a7a4c2d2d12e034a3e35",
+    "experimento/harness/core.py": "d981a56054d24f5906231b43612aacf01b78d871c7f66161deb38f5e6f63c21f",
+    "experimento/harness/judges.py": "832204cd5007af3c9f91b49b87fa638eb9880d23a963702a56c2260d0a4a911a",
+    "experimento/harness/metrics.py": "510d3300d3476a11c2f50893ce4fbe102d8417c3f1e685755a65dac9b8f33d34",
+    "experimento/harness/runner.py": "c7e467e28589a048565b346f8fce7aeffa041e0614fd159776d00f0dee44263f",
+    "experimento/preparar_dados.py": "ba6c34e02103d47cb02e47fea1a57c38646e69344f3b14a6d5f621adcd7186ee",
+    "experimento/requirements.txt": "b59aa7ffdbd7ad622a41dd2cdef6f3e6781bdf6667c36898125f48ec300ba32c",
+    "experimento/resultados/abertura-original.json": "5ba1c76b410a95767b5452db2110cd060b974de1a12704603fcdd0f58e1a1303",
+    "experimento/resultados/analise.json": "830945c41f062feafc67ddee3fefc9264ceb0f3e2ce0c229a21ba022a236dd70",
+    "experimento/resultados/execucao-original.json": "ac11b0d986a8441a060aab29a1ef468dcb32e34ac52607b239ffb9c3d6430ecd",
+    "experimento/resultados/freeze-original.json": "32e5c2c60a154a0e056c93018e08bce04396a8f3aa04af5d3951bd784a91b940",
+    "experimento/resultados/previsoes.jsonl": "4c8ef6a41662e9f9deee1dd57a97d050ca02044d49e3264bf1d381ec108a11e4",
+    "experimento/snapshots/auditoria.json": "dc7f2dc3df618d1d0c15ce9915f4ab8061a7b81a17409d4b415fdebd5d124b46",
+    "experimento/snapshots/gabarito.csv": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e",
+    "experimento/snapshots/manifesto.csv": "0edc6463ffaad119d3a9402fb3c163761b281dc702d3a3e077ad18667c515f61",
+    "experimento/tests/test_analise.py": "bca1af6b8e098881e61af8f71532e25356898197dc34d3c28a49dcf0d5ae91d1",
+    "experimento/tests/test_harness.py": "12f256a48499df8e718264593e01eed7c13a485ae1c444bbcb68d9e8f7372ccf",
+    "experimento/tests/test_preparacao.py": "5e7adc1084985f4b021bd82a96c6b44e4846b616a65731ef136a38f01d3d4648",
+    "experimento/tests/test_seguranca_execucao.py": "8795393a1afe08643f934650fc242fc6ee3798c21b2480ac63f84f03f7b33948",
+    "scripts/obter_dados.py": "62fb66fdd470edad898ff2515306d23b7606aa2c8f373d84c8b0aa3484668be1",
+    "scripts/reproduzir.py": "e96a30c93121a7f15573351bc519efdd0678ccf4beb508f65f130c088133865e",
+    "scripts/verificar_sdks.py": "d3f03c5552054782d2ceca28f4c13b021f89e6ff4fc977b89d5600135fdc471c"
   },
+  "historical_commit": "b02e95dfd47eea6aae17d0c0cc0bfcf78ee7a110",
+  "historical_manifest_url": "https://github.com/fabriciopedreira/jev-decision-benchmark/blob/b02e95dfd47eea6aae17d0c0cc0bfcf78ee7a110/manifesto-exportacao.json",
   "not_exported": [
     ".env",
     "credenciais",
@@ -38,21 +54,41 @@
     "resultados históricos fora do WiCE"
   ],
   "original_results_sha256": "84f03a94349c3cda0e24a3f3f3418886e5d22ccea5f304a3e8101a5551aa5d53",
-  "public_results_path": "experimento/resultados/v4-wice-test-public.jsonl",
-  "public_results_sha256": "4c8ef6a41662e9f9deee1dd57a97d050ca02044d49e3264bf1d381ec108a11e4",
-  "transformation": "Allowlist de previsões, rotas, latências e tokens; payloads, prompts e textos removidos; IDs OpenAI substituídos por SHA-256. Valores numéricos preservados.",
-  "transformed_documents": {
-    "experimento/resultados/v4-latencia-e-decisao.md": {
-      "original_sha256": "1d48ce364da6a8a2b4d040fd9d46394be3aa4cdcf44e11a03a436bbeec1f56e5",
-      "public_sha256": "20289264c819046df478e52b45ae296fccf4008163e381f332d2d1b9ca939b82"
+  "preserved_artifacts": {
+    "docs/protocolo-original.md": {
+      "historical_path": "protocolo-v4.md",
+      "sha256": "5a0d0ec62ea6eece6bb660c4026013d3f84c17494345638409e51b6907bf0de0"
     },
-    "experimento/resultados/v4-wice-resultados.md": {
-      "original_sha256": "036cba2017c96df59e82b954b92d0627c41dd52f203067f0e992f538fbcd69da",
-      "public_sha256": "352f343d887574839cddfec7562ac90020623e02a613b5b2a028b02ab0e81d33"
+    "experimento/resultados/abertura-original.json": {
+      "historical_path": "experimento/resultados/unseal-v4-wice.json",
+      "sha256": "5ba1c76b410a95767b5452db2110cd060b974de1a12704603fcdd0f58e1a1303"
     },
-    "revisao-independente-v4.md": {
-      "original_sha256": "bd0972adf511ea8af44cbed517ea80df5fc099002ac893679839bbfa75baa86a",
-      "public_sha256": "61379f6d16dfe6a46949652c1b3d1afe5acb39466bb59a40788c745aed2354d2"
+    "experimento/resultados/analise.json": {
+      "historical_path": "experimento/resultados/v4-wice-analysis.json",
+      "sha256": "830945c41f062feafc67ddee3fefc9264ceb0f3e2ce0c229a21ba022a236dd70"
+    },
+    "experimento/resultados/execucao-original.json": {
+      "historical_path": "experimento/resultados/v4-wice-test-metadata.json",
+      "sha256": "ac11b0d986a8441a060aab29a1ef468dcb32e34ac52607b239ffb9c3d6430ecd"
+    },
+    "experimento/resultados/freeze-original.json": {
+      "historical_path": "experimento/resultados/freeze-v4-wice.json",
+      "sha256": "32e5c2c60a154a0e056c93018e08bce04396a8f3aa04af5d3951bd784a91b940"
+    },
+    "experimento/snapshots/auditoria.json": {
+      "historical_path": "experimento/snapshots/wice-v4-audit.json",
+      "sha256": "dc7f2dc3df618d1d0c15ce9915f4ab8061a7b81a17409d4b415fdebd5d124b46"
+    },
+    "experimento/snapshots/gabarito.csv": {
+      "historical_path": "experimento/snapshots/wice-v4-labels.csv",
+      "sha256": "b8c285012a4454af9b4952282046affafad0165373a7b50ff0d0c4220eb3007e"
+    },
+    "experimento/snapshots/manifesto.csv": {
+      "historical_path": "experimento/snapshots/wice-v4-manifest.csv",
+      "sha256": "0edc6463ffaad119d3a9402fb3c163761b281dc702d3a3e077ad18667c515f61"
     }
-  }
+  },
+  "public_results_path": "experimento/resultados/previsoes.jsonl",
+  "public_results_sha256": "4c8ef6a41662e9f9deee1dd57a97d050ca02044d49e3264bf1d381ec108a11e4",
+  "transformation": "Allowlist de previsões, rotas, latências e tokens; payloads, prompts e textos removidos; IDs OpenAI substituídos por SHA-256. Valores numéricos preservados."
 }

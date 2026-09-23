@@ -7,11 +7,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from analisar_wice_v4 import cost, margin_state, short_score
-from harness_v3.metrics import score
+from analisar import cost, margin_state, short_score
+from harness.metrics import score
 
 
-class AnalyzeV4Tests(unittest.TestCase):
+class AnalysisTests(unittest.TestCase):
     def test_cache_write_and_hit_prices_are_distinct(self):
         prediction = {
             "usage": {"input_tokens": 1_000, "output_tokens": 10, "cached_input_tokens": 300},

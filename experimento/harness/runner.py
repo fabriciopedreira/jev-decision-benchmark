@@ -12,18 +12,18 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from harness_v3.core import InputCase, Prediction
-from harness_v3.judges import RuleJudge
+from harness.core import InputCase, Prediction
+from harness.judges import RuleJudge
 
-from .judges import JevJudgeV4, OpenAIJudgeV4
+from .judges import JevJudge, OpenAIJudge
 
 
 EXPERIMENT_ROOT = Path(__file__).resolve().parents[1]
 TOPIC_ROOT = EXPERIMENT_ROOT.parent
-SNAPSHOT = EXPERIMENT_ROOT / "snapshots/wice-v4-inputs.jsonl"
-MANIFEST = EXPERIMENT_ROOT / "snapshots/wice-v4-manifest.csv"
-LABELS = EXPERIMENT_ROOT / "snapshots/wice-v4-labels.csv"
-PROTOCOL = TOPIC_ROOT / "protocolo-v4.md"
+SNAPSHOT = EXPERIMENT_ROOT / "snapshots/entradas.jsonl"
+MANIFEST = EXPERIMENT_ROOT / "snapshots/manifesto.csv"
+LABELS = EXPERIMENT_ROOT / "snapshots/gabarito.csv"
+PROTOCOL = TOPIC_ROOT / "docs/protocolo-original.md"
 SEED = 20260923
 
 
@@ -37,11 +37,10 @@ def sha256(path: Path) -> str:
 
 def implementation_hash() -> str:
     paths = [
-        EXPERIMENT_ROOT / "preparar_wice_v4.py",
+        EXPERIMENT_ROOT / "preparar_dados.py",
         EXPERIMENT_ROOT / "requirements.txt",
-        EXPERIMENT_ROOT / "harness_v3/core.py",
-        EXPERIMENT_ROOT / "harness_v3/judges.py",
-        *sorted((EXPERIMENT_ROOT / "harness_v4").glob("*.py")),
+        EXPERIMENT_ROOT / "analisar.py",
+        *sorted((EXPERIMENT_ROOT / "harness").glob("*.py")),
     ]
     digest = hashlib.sha256()
     for path in paths:
@@ -52,7 +51,7 @@ def implementation_hash() -> str:
     return digest.hexdigest()
 
 
-class DatasetV4:
+class Dataset:
     def __init__(self):
         with SNAPSHOT.open(encoding="utf-8") as handle:
             snapshots = [json.loads(line) for line in handle if line.strip()]
@@ -106,7 +105,7 @@ def identity() -> dict:
     }
 
 
-def create_freeze(path: Path, dataset: DatasetV4) -> dict:
+def create_freeze(path: Path, dataset: Dataset) -> dict:
     rule = RuleJudge.fit(dataset.cases("calibration"), dataset.calibration_labels())
     payload = {
         **identity(),
@@ -127,8 +126,10 @@ def create_freeze(path: Path, dataset: DatasetV4) -> dict:
     return payload
 
 
-def verify_freeze(path: Path, dataset: DatasetV4) -> dict:
+def verify_freeze(path: Path, dataset: Dataset) -> dict:
     payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("implementation_sha256") != implementation_hash():
+        raise ValueError("Freeze divergente: implementation_sha256. A distribuição consolidada exige um novo freeze; não reutilize o registro da execução original.")
     for key, value in identity().items():
         if payload.get(key) != value:
             raise ValueError(f"Freeze divergente: {key}")
@@ -195,7 +196,7 @@ def run_case(case: InputCase, judges: dict, rule: RuleJudge, *, negative: float,
     return output
 
 
-def execute(args, dataset: DatasetV4) -> None:
+def execute(args, dataset: Dataset) -> None:
     if not args.execute_external:
         raise SystemExit("Chamadas externas exigem --execute-external")
     if args.split == "test":
@@ -209,8 +210,12 @@ def execute(args, dataset: DatasetV4) -> None:
                   "cascade_negative_threshold": 0.30, "cascade_positive_threshold": 0.70}
     if args.output.exists() or args.metadata_output.exists():
         raise FileExistsError("Resultado ou metadados já existem; não sobrescrever")
+    if args.output.resolve() == args.metadata_output.resolve():
+        raise ValueError("Resultado e metadados precisam de destinos distintos")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.metadata_output.parent.mkdir(parents=True, exist_ok=True)
     read_env_keys(args.env_file)
-    from harness_v3.core import validate_runtime_versions
+    from harness.core import validate_runtime_versions
 
     validate_runtime_versions(require_openai=True)
     cases = dataset.cases(args.split)
@@ -221,12 +226,11 @@ def execute(args, dataset: DatasetV4) -> None:
         cases = cases[:args.max_cases]
     rule = RuleJudge(float(policy["rule_threshold"]))
     judges = {
-        "jev": JevJudgeV4(),
-        "luna": OpenAIJudgeV4("gpt-5.6-luna", reasoning_effort="none"),
-        "terra": OpenAIJudgeV4("gpt-5.6-terra", reasoning_effort=None),
+        "jev": JevJudge(),
+        "luna": OpenAIJudge("gpt-5.6-luna", reasoning_effort="none"),
+        "terra": OpenAIJudge("gpt-5.6-terra", reasoning_effort=None),
     }
     started = datetime.now(timezone.utc)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
     try:
         with args.output.open("x", encoding="utf-8") as handle:
             for index, case in enumerate(cases, 1):
@@ -240,12 +244,14 @@ def execute(args, dataset: DatasetV4) -> None:
     finally:
         for judge in judges.values():
             judge.close()
+    with args.output.open(encoding="utf-8") as handle:
+        completed_cases = sum(1 for line in handle if line.strip())
     metadata = {
         "started_at_utc": started.isoformat(),
         "ended_at_utc": datetime.now(timezone.utc).isoformat(),
         "split": args.split,
         "expected_cases": len(cases),
-        "completed_cases": sum(1 for line in args.output.open(encoding="utf-8") if line.strip()),
+        "completed_cases": completed_cases,
         "identity": identity(),
         "freeze_sha256": sha256(args.freeze) if args.freeze else None,
         "result_sha256": sha256(args.output),
@@ -277,7 +283,7 @@ def main() -> None:
     run.add_argument("--env-file", type=Path, default=Path.cwd() / ".env")
     run.add_argument("--execute-external", action="store_true")
     args = parser.parse_args()
-    dataset = DatasetV4()
+    dataset = Dataset()
     if args.action == "validate":
         print(json.dumps({"identity": identity(), "calibration": len(dataset.cases("calibration")),
                           "test": len(dataset.cases("test"))}, indent=2, sort_keys=True))

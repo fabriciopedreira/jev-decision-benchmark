@@ -15,7 +15,7 @@ O gabarito é a anotação publicada pelos autores do WiCE, não uma resposta de
 
 Por exemplo, 0,92 encerra em Jev e 0,55 aciona Luna. São exemplos ilustrativos. Os limiares pertencem ao experimento e não garantem uma frequência de acerto igual à probabilidade reportada.
 
-O controle Luna sozinha é uma chamada separada da Luna acionada na cascata. No sistema em avaliação não se chama a baseline para depois aproveitar sua resposta. Veja [decide_cascade e run_case](../experimento/harness_v4/runner.py).
+O controle Luna sozinha é uma chamada separada da Luna acionada na cascata. No sistema em avaliação não se chama a baseline para depois aproveitar sua resposta. Veja [decide_cascade e run_case](../experimento/harness/runner.py).
 
 ## Condições e instrumentação
 
@@ -24,7 +24,7 @@ O controle Luna sozinha é uma chamada separada da Luna acionada na cascata. No 
 - Ordem de blocos intercalada por caso, seed `20260923`, concorrência 1, timeout 30 s e retries 0. Cascata medida de ponta a ponta com relógio monotônico; nos encaminhados entram duas chamadas.
 - 355 dos 358 casos oficiais; três exclusões por evidência acima de 60 mil caracteres; 111 positivos e 244 negativos, em 323 grupos de página.
 - Protocolo, entradas, gabarito, manifesto, implementação e limites congelados antes do teste. O código de análise foi hasheado antes da abertura do gabarito, mas não estava no freeze inicial. Os hashes são evidência local, não pré-registro público com carimbo independente.
-- Bootstrap pareado por grupo de página, 10 mil reamostragens. Métricas, limites de não inferioridade e resultados formais no [protocolo](../protocolo-v4.md) e [relatório](../experimento/resultados/v4-wice-resultados.md).
+- Bootstrap pareado por grupo de página, 10 mil reamostragens. Métricas, limites de não inferioridade e resultados formais no [protocolo](protocolo-original.md) e [relatório](resultados.md).
 
 ## Cuidados de interpretação
 

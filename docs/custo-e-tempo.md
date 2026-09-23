@@ -1,14 +1,14 @@
-> Cópia para publicação. Consulte [proveniência](../../docs/proveniencia.md). Estados de aprovação abaixo são históricos.
+> Cópia para publicação. Consulte [proveniência](proveniencia.md). Estados de aprovação abaixo são históricos.
 
-# V4 — leitura operacional de latência e custo
+# Leitura operacional de latência e custo
 
-Data: 23/09/2026. **Análise posterior à abertura do gabarito.** Não altera o [protocolo congelado](../../protocolo-v4.md), os dados, os thresholds nem o veredito dos portões pré-definidos. Valores calculados do [resultado público saneado](v4-wice-test-public.jsonl) e conferidos com a [análise V4](v4-wice-analysis.json).
+Data: 23/09/2026. **Análise posterior à abertura do gabarito.** Não altera o [protocolo congelado](protocolo-original.md), os dados, os thresholds nem o veredito dos portões pré-definidos. Valores calculados do [resultado público saneado](../experimento/resultados/previsoes.jsonl) e conferidos com a [análise](../experimento/resultados/analise.json).
 
 ## Origem do mínimo de 5×
 
-O mínimo de custo 5× foi uma **heurística editorial/experimental proposta por nós** na seção 8 do [protocolo V3](../../protocolo-v3.md), para exigir que uma nova dependência compensasse sua complexidade. Não veio de um SLA, da operação de Fabricio, de um modelo econômico validado ou de uma exigência técnica do Jev. O protocolo V4 herdou o número antes do teste. Foi um erro de comunicação apresentá-lo como se fosse um critério natural ou acordado.
+O mínimo de custo 5× foi uma **heurística editorial/experimental proposta por nós** na seção 8 do [protocolo V3](https://github.com/fabriciopedreira/jev-decision-benchmark/blob/b02e95dfd47eea6aae17d0c0cc0bfcf78ee7a110/protocolo-v3.md), para exigir que uma nova dependência compensasse sua complexidade. Não veio de um SLA, da operação de Fabricio, de um modelo econômico validado ou de uma exigência técnica do Jev. O protocolo WiCE herdou o número antes do teste. Foi um erro de comunicação apresentá-lo como se fosse um critério natural ou acordado.
 
-Por integridade, o resultado formal permanece: Jev direto atingiu 4,41× de redução de custo calculado frente à Luna e **falhou no portão pré-registrado de 5×**. Isso não significa que 4,41× seja economicamente irrelevante ou que o modelo fracassou. Um julgamento de adoção precisaria do volume, custo de integração/monitoramento, valor da latência, custo de erro e requisito de estabilidade do fluxo real — nenhum deles foi medido nesta V4. A estabilidade V4 também não foi testada. Não criar agora um novo corte conveniente para convertê-lo em aprovação.
+Por integridade, o resultado formal permanece: Jev direto atingiu 4,41× de redução de custo calculado frente à Luna e **falhou no portão pré-registrado de 5×**. Isso não significa que 4,41× seja economicamente irrelevante ou que o modelo fracassou. Um julgamento de adoção precisaria do volume, custo de integração/monitoramento, valor da latência, custo de erro e requisito de estabilidade do fluxo real — nenhum deles foi medido neste estudo. A estabilidade também não foi testada. Não criar agora um novo corte conveniente para convertê-lo em aprovação.
 
 ## A velocidade não é uma nota de rodapé
 
@@ -26,6 +26,6 @@ Com uso de tokens e preços públicos registrados, o custo/1.000 foi US$ 0,119 p
 
 ## Consequência arquitetural provisória
 
-A V4 oferece um sinal forte de **eficiência para uma tarefa estreita de suporte entre afirmação e documento**: nesta amostra, Jev direto foi mais rápido e barato que Luna, com boa concordância relativa ao gabarito; a cascata preservou seus portões técnicos frente à Luna e trouxe ganho expressivo na mediana, menor no p95. Isso justifica investigar um piloto em sombra e sensibilidade operacional, não substituir o revisor humano nem declarar Jev superior a LLMs em geral.
+O estudo oferece um sinal forte de **eficiência para uma tarefa estreita de suporte entre afirmação e documento**: nesta amostra, Jev direto foi mais rápido e barato que Luna, com boa concordância relativa ao gabarito; a cascata preservou seus portões técnicos frente à Luna e trouxe ganho expressivo na mediana, menor no p95. Isso justifica investigar um piloto em sombra e sensibilidade operacional, não substituir o revisor humano nem declarar Jev superior a LLMs em geral.
 
 Para uma decisão real, comparar explicitamente: taxa de falso suporte tolerável, qualidade por tipo de erro, p50 **e** p95 ponta a ponta, custo por decisão no mix de produção, estabilidade em repetições, dificuldade de integração e manutenção. Sem metas reais fornecidas por Fabricio, não converter esses eixos num score único ou inventar um novo mínimo universal. A [orientação oficial de avaliações da OpenAI](https://developers.openai.com/api/docs/guides/evaluation-best-practices) recomenda objetivos e conjuntos representativos do uso real; a [orientação de latência](https://developers.openai.com/api/docs/guides/latency-optimization) trata velocidade como eixo próprio de projeto. Essas fontes orientam método, não validam os números deste teste.

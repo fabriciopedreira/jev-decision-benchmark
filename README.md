@@ -8,10 +8,10 @@ A tarefa é delimitada: verificar se um documento sustenta **todas** as afirmaç
 
 - [Metodologia e funcionamento da cascata](docs/metodologia.md)
 - [Reproduzir cálculos ou executar novamente](docs/reproducao.md)
-- [Resultados completos](experimento/resultados/v4-wice-resultados.md)
-- [Latência, custo e efeitos de cache](experimento/resultados/v4-latencia-e-decisao.md)
-- [Protocolo original congelado](protocolo-v4.md)
-- [Revisão por agentes de IA](revisao-independente-v4.md) — não é parecer humano externo.
+- [Resultados completos](docs/resultados.md)
+- [Latência, custo e efeitos de cache](docs/custo-e-tempo.md)
+- [Protocolo original congelado](docs/protocolo-original.md)
+- [Revisão por agentes de IA](docs/revisao.md) — não é parecer humano externo.
 - [Proveniência, saneamento e limites da evidência](docs/proveniencia.md)
 - [Histórico metodológico e correções](docs/historico-e-limites.md)
 - [Verificações da distribuição](docs/validacao.md)
@@ -32,6 +32,8 @@ Jev resolveu 280 casos sem a segunda chamada; 75 exigiram Luna. A cascata passou
 Os custos são calculados a partir de tokens e preços registrados, não fatura. Não incluem integração, operação ou custo dos erros. Não há evidência aqui de segurança em produção, estabilidade em repetições ou generalização a outras tarefas.
 
 ## Recalcular sem API, sem credenciais e sem baixar os textos
+
+Existe uma única implementação em `experimento/harness/`. Preparação e análise ficam em `experimento/`; instruções em `docs/`; previsões e registros em `experimento/resultados/`. Versões anteriores podem ser consultadas pelo Git, não precisam ser escolhidas para executar este estudo.
 
 Python 3.11 ou superior. O caminho abaixo usa somente biblioteca padrão:
 
