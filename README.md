@@ -1,6 +1,6 @@
 # Jev entre o if e a LLM
 
-Experimento de Fabricio Pedreira sobre uma decisão de arquitetura: **vale colocar um modelo especializado antes de uma LLM para reduzir custo e espera, sem degradar a qualidade da decisão?**
+Este experimento investiga uma decisão de arquitetura: **vale colocar um modelo especializado antes de uma LLM para reduzir custo e espera, sem degradar a qualidade da decisão?**
 
 A tarefa é delimitada: verificar se um documento sustenta **todas** as afirmações materiais de uma frase. Não é avaliar um agente inteiro, determinar a verdade universal de uma frase nem autorizar publicação automática.
 
